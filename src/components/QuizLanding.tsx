@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -218,9 +217,9 @@ const QuizLanding = () => {
 
   if (showQuiz) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-4 px-3 sm:py-8 sm:px-4">
-        <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white">
-          <CardHeader className="text-center bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center p-3 sm:p-4">
+        <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white min-h-[calc(100vh-1.5rem)] sm:min-h-[calc(100vh-2rem)] flex flex-col">
+          <CardHeader className="text-center bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6 flex-shrink-0">
             <div className="flex justify-center mb-3 sm:mb-4">
               <div className="bg-yellow-300 p-2 sm:p-3 rounded-full">
                 <Moon className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
@@ -243,17 +242,17 @@ const QuizLanding = () => {
             </p>
           </CardHeader>
           
-          <CardContent className="p-4 sm:p-6">
-            <div className="mb-4 sm:mb-6">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-4 sm:mb-6 leading-relaxed">
+          <CardContent className="p-4 sm:p-6 flex-1 flex flex-col justify-center">
+            <div className="flex-1 flex flex-col justify-center">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-6 sm:mb-8 leading-relaxed text-center">
                 {questions[currentQuestion].question}
               </h3>
-              <div className="space-y-2 sm:space-y-3">
+              <div className="space-y-3 sm:space-y-4">
                 {questions[currentQuestion].options.map((option, index) => (
                   <Button
                     key={index}
                     variant="outline"
-                    className="w-full text-left p-3 sm:p-4 h-auto hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 font-medium text-sm sm:text-base"
+                    className="w-full text-left p-4 sm:p-5 h-auto hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 font-medium text-sm sm:text-base min-h-[3.5rem] sm:min-h-[4rem] flex items-center"
                     onClick={() => handleAnswer(option)}
                   >
                     {option}
