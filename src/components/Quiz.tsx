@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Baby, Clock, Moon, Heart, ArrowRight, CheckCircle, Star } from 'lucide-react';
+import { Baby, Clock, Moon, Heart, ArrowRight, CheckCircle, Star, AlertTriangle, Zap } from 'lucide-react';
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -12,52 +12,52 @@ const Quiz = () => {
   const questions = [
     {
       id: 1,
-      question: "Há quanto tempo você está enfrentando dificuldades com o sono do seu bebê?",
+      question: "🚨 SITUAÇÃO DE EMERGÊNCIA: Seu bebê está transformando sua vida num INFERNO?",
       options: [
-        "Menos de 1 mês",
-        "1-3 meses",
-        "3-6 meses",
-        "Mais de 6 meses"
+        "😭 Sim, estou virando um zumbi",
+        "😵 Durmo menos de 3 horas seguidas",
+        "🤯 Meu relacionamento está acabando",
+        "💀 Todas as opções acima (SOCORRO!)"
       ]
     },
     {
       id: 2,
-      question: "Quantas vezes por noite seu bebê acorda?",
+      question: "⏰ Quantas HORAS você perde TODA NOITE tentando fazer seu bebê dormir?",
       options: [
-        "1-2 vezes",
-        "3-4 vezes",
-        "5-6 vezes",
-        "Mais de 6 vezes"
+        "1-2 horas (ainda tenho esperança)",
+        "2-4 horas (começando a desesperar)",
+        "4-6 horas (quero sumir do mapa)",
+        "A NOITE TODA (estou no limite!)"
       ]
     },
     {
       id: 3,
-      question: "Quanto tempo você gasta tentando fazer seu bebê dormir?",
+      question: "💸 Quanto você já GASTOU tentando resolver isso sem sucesso?",
       options: [
-        "Menos de 30 minutos",
-        "30 minutos a 1 hora",
-        "1-2 horas",
-        "Mais de 2 horas"
+        "Menos de R$ 500",
+        "R$ 500 - R$ 1.000",
+        "R$ 1.000 - R$ 2.000",
+        "Mais de R$ 2.000 (e nada funcionou!)"
       ]
     },
     {
       id: 4,
-      question: "Como você se sente após uma noite mal dormida?",
+      question: "🆘 Se eu te dissesse que existe um MÉTODO PROIBIDO que resolve tudo em dias?",
       options: [
-        "Um pouco cansado(a)",
-        "Muito cansado(a)",
-        "Exausto(a)",
-        "Completamente esgotado(a)"
+        "🤔 Seria bom demais pra ser verdade",
+        "😍 EU PAGARIA QUALQUER COISA!",
+        "😱 Por favor, me salve dessa tortura",
+        "🔥 QUERO AGORA MESMO!"
       ]
     },
     {
       id: 5,
-      question: "O que você mais deseja neste momento?",
+      question: "💀 Qual é seu MAIOR MEDO neste momento?",
       options: [
-        "Uma noite de sono completa",
-        "Que meu bebê durma sozinho",
-        "Ter mais energia durante o dia",
-        "Todas as opções acima"
+        "Meu bebê nunca vai dormir direito",
+        "Vou ter uma depressão pós-parto",
+        "Meu casamento vai acabar",
+        "Vou desmaiar de exaustão"
       ]
     }
   ];
@@ -81,106 +81,137 @@ const Quiz = () => {
 
   if (showResult) {
     return (
-      <Card className="w-full max-w-2xl mx-auto shadow-2xl border-0 bg-gradient-to-br from-white to-blue-50">
-        <CardHeader className="text-center pb-4">
+      <Card className="w-full max-w-3xl mx-auto shadow-2xl border-0 bg-gradient-to-br from-white to-red-50">
+        <CardHeader className="text-center pb-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-t-lg">
           <div className="flex justify-center mb-4">
-            <div className="bg-green-100 p-4 rounded-full">
-              <CheckCircle className="h-12 w-12 text-green-600" />
+            <div className="bg-yellow-400 p-4 rounded-full animate-pulse">
+              <AlertTriangle className="h-12 w-12 text-red-600" />
             </div>
           </div>
-          <CardTitle className="text-3xl font-bold text-gray-800 mb-2">
-            🎯 Resultado do Seu Quiz
+          <CardTitle className="text-4xl font-black mb-2">
+            🚨 CÓDIGO VERMELHO! 🚨
           </CardTitle>
-          <div className="flex justify-center space-x-1 mb-4">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <Star key={star} className="h-6 w-6 text-yellow-400 fill-current" />
-            ))}
-          </div>
+          <p className="text-xl font-bold text-yellow-200">
+            SITUAÇÃO CRÍTICA DETECTADA!
+          </p>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-lg border-l-4 border-red-400">
-            <h3 className="text-xl font-semibold text-red-700 mb-3">
-              ⚠️ ALERTA: Situação Crítica Detectada!
+        <CardContent className="space-y-6 p-8">
+          <div className="bg-gradient-to-r from-red-100 to-red-200 p-6 rounded-lg border-l-8 border-red-500">
+            <h3 className="text-2xl font-black text-red-700 mb-4 flex items-center">
+              <Zap className="h-8 w-8 mr-2 text-yellow-500" />
+              ⚠️ ALERTA MÁXIMO: VOCÊ ESTÁ NO LIMITE!
             </h3>
-            <p className="text-gray-700 leading-relaxed">
-              Com base nas suas respostas, identificamos que você está enfrentando uma situação 
-              <strong className="text-red-600"> extremamente desgastante</strong> que pode afetar 
-              seriamente sua saúde e bem-estar familiar.
+            <p className="text-lg text-gray-800 leading-relaxed mb-4">
+              Suas respostas revelam uma situação <strong className="text-red-600 text-xl">DESESPERADORA</strong>. 
+              Você está literalmente se destruindo e seu bebê também está sofrendo!
             </p>
+            <div className="bg-white p-4 rounded-lg border-2 border-red-300">
+              <p className="text-red-700 font-bold text-center text-lg">
+                💀 A CADA DIA QUE PASSA, VOCÊ ESTÁ MAIS PERTO DO COLAPSO TOTAL! 💀
+              </p>
+            </div>
           </div>
 
-          <div className="bg-blue-50 p-6 rounded-lg">
-            <h3 className="text-xl font-semibold text-blue-700 mb-3 flex items-center">
-              <Baby className="h-6 w-6 mr-2" />
-              O Que Isso Significa Para Você:
+          <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-lg border-2 border-yellow-400">
+            <h3 className="text-2xl font-black text-orange-700 mb-4 text-center">
+              🚨 MAS CALMA... EXISTE UMA SOLUÇÃO! 🚨
             </h3>
-            <ul className="space-y-2 text-gray-700">
-              <li className="flex items-start">
-                <span className="text-red-500 mr-2">•</span>
-                Esgotamento físico e mental progressivo
-              </li>
-              <li className="flex items-start">
-                <span className="text-red-500 mr-2">•</span>
-                Impacto negativo no desenvolvimento do bebê
-              </li>
-              <li className="flex items-start">
-                <span className="text-red-500 mr-2">•</span>
-                Estresse familiar e relacionamentos abalados
-              </li>
-              <li className="flex items-start">
-                <span className="text-red-500 mr-2">•</span>
-                Diminuição da imunidade e produtividade
-              </li>
-            </ul>
+            <div className="text-center mb-6">
+              <h2 className="text-3xl font-black text-red-600 mb-2 animate-pulse">
+                💤 SONECA DOS SONHOS
+              </h2>
+              <p className="text-xl font-bold text-gray-800">
+                O MÉTODO PROIBIDO QUE FAZ BEBÊ DORMIR COMO ANJO!
+              </p>
+            </div>
           </div>
 
-          <div className="bg-green-50 p-6 rounded-lg border-2 border-green-200">
-            <h3 className="text-xl font-semibold text-green-700 mb-3 flex items-center">
-              <Heart className="h-6 w-6 mr-2" />
-              A Boa Notícia:
+          <div className="bg-green-50 p-6 rounded-lg border-2 border-green-400">
+            <h3 className="text-xl font-bold text-green-700 mb-4 flex items-center">
+              <CheckCircle className="h-6 w-6 mr-2" />
+              🎯 O QUE VOCÊ VAI CONSEGUIR:
             </h3>
-            <p className="text-gray-700 mb-4">
-              <strong>Você não precisa passar por isso sozinho(a)!</strong> Milhares de pais já 
-              transformaram completamente o sono dos seus bebês com nosso método comprovado.
-            </p>
-            <div className="bg-white p-4 rounded-lg">
-              <p className="text-sm text-gray-600 italic">
-                "Em apenas 7 dias, minha filha começou a dormir a noite toda. 
-                Foi uma mudança de vida para nossa família!" - Maria, mãe da Sofia
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
+              <div className="flex items-start">
+                <span className="text-green-500 mr-2 text-xl">✅</span>
+                <span className="font-semibold">Adeus choradeira sem fim</span>
+              </div>
+              <div className="flex items-start">
+                <span className="text-green-500 mr-2 text-xl">✅</span>
+                <span className="font-semibold">Olá noites de sono profundo</span>
+              </div>
+              <div className="flex items-start">
+                <span className="text-green-500 mr-2 text-xl">✅</span>
+                <span className="font-semibold">Bebê pega no sono com facilidade</span>
+              </div>
+              <div className="flex items-start">
+                <span className="text-green-500 mr-2 text-xl">✅</span>
+                <span className="font-semibold">SEM traumas, SEM culpa</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-lg border-2 border-purple-400">
+            <div className="text-center mb-4">
+              <h3 className="text-2xl font-black text-purple-700 mb-2">
+                🎁 BÔNUS EXCLUSIVO HOJE! 🎁
+              </h3>
+              <p className="text-lg font-bold text-gray-800">
+                Checklist da Rotina Noturna Perfeita
+              </p>
+              <p className="text-sm text-purple-600 font-semibold">
+                (Valor: R$ 97,00 - GRÁTIS hoje!)
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-yellow-50 p-6 rounded-lg border-2 border-yellow-400">
+            <div className="text-center mb-4">
+              <p className="text-lg text-gray-800 font-semibold mb-2">
+                💥 <strong>Já transformou a vida de centenas de pais.</strong>
+              </p>
+              <p className="text-xl font-black text-red-600">
+                AGORA VAI TRANSFORMAR A SUA!
               </p>
             </div>
           </div>
 
           <div className="text-center space-y-4">
-            <div className="bg-gradient-to-r from-yellow-400 to-orange-400 p-1 rounded-lg">
+            <div className="bg-gradient-to-r from-red-500 to-red-600 p-1 rounded-lg animate-pulse">
               <Button 
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-8 text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black py-6 px-8 text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
                 onClick={() => window.open('https://seu-link-de-produto.com', '_blank')}
               >
-                <ArrowRight className="h-5 w-5 mr-2" />
-                SIM! QUERO TRANSFORMAR O SONO DO MEU BEBÊ AGORA
+                <Zap className="h-6 w-6 mr-2" />
+                ⚡ CLIQUE AGORA - ANTES QUE EU DESMAIE! ⚡
               </Button>
             </div>
             
-            <div className="flex items-center justify-center space-x-4 text-sm text-gray-600">
+            <div className="bg-red-100 p-4 rounded-lg border-2 border-red-400">
+              <p className="text-red-700 font-bold text-lg">
+                ⏰ <strong>URGENTE:</strong> Antes que você desmaie de exaustão e desista da vida!
+              </p>
+            </div>
+
+            <div className="flex items-center justify-center space-x-6 text-sm text-gray-600">
               <div className="flex items-center">
                 <Clock className="h-4 w-4 mr-1" />
-                Resultados em 7 dias
+                Transformação em dias
               </div>
               <div className="flex items-center">
                 <CheckCircle className="h-4 w-4 mr-1" />
-                Garantia de 30 dias
+                Método comprovado
+              </div>
+              <div className="flex items-center">
+                <Heart className="h-4 w-4 mr-1" />
+                Sem traumas
               </div>
             </div>
-
-            <p className="text-xs text-gray-500">
-              ⏰ <strong>Oferta por tempo limitado!</strong> Não perca esta oportunidade única.
-            </p>
 
             <Button 
               variant="outline" 
               onClick={resetQuiz}
-              className="mt-4 text-gray-600 hover:text-gray-800"
+              className="mt-6 text-gray-600 hover:text-gray-800"
             >
               Refazer o Quiz
             </Button>
@@ -192,31 +223,31 @@ const Quiz = () => {
 
   return (
     <Card className="w-full max-w-xl mx-auto shadow-2xl border-0 bg-white">
-      <CardHeader className="text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-t-lg">
+      <CardHeader className="text-center bg-gradient-to-r from-red-500 to-red-600 text-white rounded-t-lg">
         <div className="flex justify-center mb-4">
-          <div className="bg-white/20 p-3 rounded-full">
-            <Moon className="h-8 w-8" />
+          <div className="bg-yellow-400 p-3 rounded-full animate-pulse">
+            <AlertTriangle className="h-8 w-8 text-red-600" />
           </div>
         </div>
-        <CardTitle className="text-2xl font-bold mb-2">
-          🍼 Quiz do Sono do Bebê
+        <CardTitle className="text-2xl font-black mb-2">
+          🚨 QUIZ DE EMERGÊNCIA 🚨
         </CardTitle>
-        <p className="text-blue-100 text-sm">
-          Descubra em 2 minutos como transformar o sono do seu bebê
+        <p className="text-yellow-200 text-sm font-bold">
+          Descubra em 2 minutos se você está no LIMITE!
         </p>
-        <div className="mt-4 bg-white/20 rounded-full h-2">
+        <div className="mt-4 bg-white/20 rounded-full h-3">
           <div 
-            className="bg-yellow-300 h-2 rounded-full transition-all duration-300"
+            className="bg-yellow-400 h-3 rounded-full transition-all duration-500 animate-pulse"
             style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
           />
         </div>
-        <p className="text-xs mt-2 text-blue-100">
+        <p className="text-xs mt-2 text-yellow-100">
           Pergunta {currentQuestion + 1} de {questions.length}
         </p>
       </CardHeader>
       <CardContent className="p-8">
         <div className="mb-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-6 leading-relaxed">
+          <h3 className="text-lg font-bold text-gray-800 mb-6 leading-relaxed">
             {questions[currentQuestion].question}
           </h3>
           <div className="space-y-3">
@@ -224,18 +255,19 @@ const Quiz = () => {
               <Button
                 key={index}
                 variant="outline"
-                className="w-full text-left p-4 h-auto hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 hover:scale-102"
+                className="w-full text-left p-4 h-auto hover:bg-red-50 hover:border-red-300 transition-all duration-200 hover:scale-102 font-semibold"
                 onClick={() => handleAnswer(option)}
               >
-                <span className="block">{option}</span>
+                <span className="block text-sm">{option}</span>
               </Button>
             ))}
           </div>
         </div>
         
-        <div className="text-center mt-8 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-          <p className="text-sm text-yellow-800">
-            <strong>💡 Dica:</strong> Seja honesto(a) nas respostas para um resultado mais preciso!
+        <div className="text-center mt-8 p-4 bg-red-50 rounded-lg border border-red-200">
+          <p className="text-sm text-red-800 font-bold">
+            🔥 <strong>ATENÇÃO:</strong> Este eBook não é para pais "mais ou menos". 
+            É pra quem quer SALVAR suas noites!
           </p>
         </div>
       </CardContent>
