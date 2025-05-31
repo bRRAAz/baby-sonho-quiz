@@ -225,11 +225,7 @@ const QuizLanding = () => {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center p-3 sm:p-4">
         <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white min-h-[calc(100vh-1.5rem)] sm:min-h-[calc(100vh-2rem)] flex flex-col">
           <CardHeader className="text-center bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6 flex-shrink-0">
-            <div className="flex justify-center mb-3 sm:mb-4">
-              <div className="bg-yellow-300 p-2 sm:p-3 rounded-full">
-                <Moon className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
-              </div>
-            </div>
+
             <CardTitle className="text-lg sm:text-xl font-bold mb-2">
               🌙 Quiz do Sono do Bebê
             </CardTitle>
@@ -272,58 +268,64 @@ const QuizLanding = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-4 px-3 sm:py-8 sm:px-4">
-      <div className="flex flex-col flex-1 max-w-4xl mx-auto">
-        <Card className="flex-1 flex flex-col w-full shadow-2xl border-0 bg-white mb-6 sm:mb-8">
-          <CardHeader className="text-center bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6">
-            <div className="flex justify-center mb-3 sm:mb-4">
-              <div className="bg-yellow-300 p-3 sm:p-4 rounded-full">
-                <Baby className="h-10 w-10 sm:h-12 sm:w-12 text-blue-600" />
-              </div>
-            </div>
-            <CardTitle className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
-              💤 Seu bebê custa a dormir?
-            </CardTitle>
-            <p className="text-blue-100 text-sm sm:text-base">
-              Faça este quiz rápido e descubra o que está atrapalhando as noites da sua família
-            </p>
-          </CardHeader>
 
-          <CardContent className="p-4 sm:p-6 md:p-8 flex-grow">
-            <div className="text-center space-y-4 sm:space-y-6 h-full">
-              <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-4 sm:p-6 rounded-lg border border-yellow-200">
-                <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3">O que você vai descobrir:</h3>
-                <div className="text-left space-y-2 text-gray-700 text-sm sm:text-base">
-                  <div className="flex items-start">
-                    <span className="text-green-500 mr-2 mt-0.5">✅</span>
-                    <span>Por que seu bebê tem dificuldade para dormir</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-green-500 mr-2 mt-0.5">✅</span>
-                    <span>Qual método funciona melhor para sua situação</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-green-500 mr-2 mt-0.5">✅</span>
-                    <span>Como criar uma rotina noturna eficaz</span>
-                  </div>
+
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center p-3 sm:p-4">
+      <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white min-h-[calc(100vh-1.5rem)] sm:min-h-[calc(100vh-2rem)] flex flex-col">
+        <CardHeader className="text-center bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6 flex-shrink-0">
+          <div className="flex justify-center mb-3 sm:mb-4">
+            <div className="bg-yellow-300 p-3 sm:p-4 rounded-full">
+              <Baby className="h-10 w-10 sm:h-12 sm:w-12 text-blue-600" />
+            </div>
+          </div>
+          <CardTitle className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
+            💤 Seu bebê custa a dormir?
+          </CardTitle>
+          <p className="text-blue-100 text-sm sm:text-base">
+            Faça este quiz rápido e descubra o que está atrapalhando as noites da sua família
+          </p>
+        </CardHeader>
+
+        <CardContent className="flex flex-col flex-1 p-4 sm:p-6 md:p-8">
+          <div className="flex flex-col flex-1 text-center space-y-4 sm:space-y-6 h-full">
+            <div className="flex-1 bg-gradient-to-r from-yellow-50 to-orange-50 p-4 sm:p-6 rounded-lg border border-yellow-200">
+              <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3">O que você vai descobrir:</h3>
+              <div className="text-left space-y-2 text-gray-700 text-sm sm:text-base">
+                <div className="flex items-start">
+                  <span className="text-green-500 mr-2 mt-0.5">✅</span>
+                  <span>Por que seu bebê tem dificuldade para dormir</span>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-green-500 mr-2 mt-0.5">✅</span>
+                  <span>Qual método funciona melhor para sua situação</span>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-green-500 mr-2 mt-0.5">✅</span>
+                  <span>Como criar uma rotina noturna eficaz</span>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-green-500 mr-2 mt-0.5">✅</span>
+                  <span>Como ajudar seu bebê a dormir melhor</span>
                 </div>
               </div>
-
-              <Button
-                onClick={startQuiz}
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 sm:py-4 px-4 sm:px-8 text-base sm:text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
-              >
-                <Baby className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                🚀 COMEÇAR O QUIZ AGORA!
-              </Button>
-
-              <p className="text-xs sm:text-sm text-gray-500">
-                ⏱️ Apenas 2 minutos • 100% gratuito • Resultados instantâneos
-              </p>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+
+            <Button
+              onClick={startQuiz}
+              className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 sm:py-4 px-4 sm:px-8 text-base sm:text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
+            >
+              <Baby className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+              🚀 COMEÇAR O QUIZ AGORA!
+            </Button>
+
+            <p className="text-xs sm:text-sm text-gray-500">
+              ⏱️ Apenas 2 minutos • 100% gratuito • Resultados instantâneos
+            </p>
+
+
+          </div>
+        </CardContent>
+      </Card>
     </div>
 
   );
