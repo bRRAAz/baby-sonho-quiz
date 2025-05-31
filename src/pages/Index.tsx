@@ -1,12 +1,8 @@
 
-import Quiz from "@/components/Quiz";
+import QuizLanding from "@/components/QuizLanding";
 
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center p-4">
-      <Quiz />
-    </div>
-  );
+  return <QuizLanding />;
 };
 
 export default Index;
