@@ -270,7 +270,7 @@ const QuizLanding = () => {
   return (
 
 
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center p-3 sm:p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center p-3 sm:p-4 flex-col">
       <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white min-h-[calc(100vh-1.5rem)] sm:min-h-[calc(100vh-2rem)] flex flex-col">
         <CardHeader className="text-center bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6 flex-shrink-0">
           <div className="flex justify-center mb-3 sm:mb-4">
@@ -326,6 +326,15 @@ const QuizLanding = () => {
           </div>
         </CardContent>
       </Card>
+      <div className="text-center pt-4">
+        <p className="text-gray-600 mb-3 sm:mb-4 text-xs sm:text-base">Método que ajudou mais de 500 famílias a terem noites tranquilas</p>
+        <div className="flex justify-center items-center space-x-1 sm:space-x-2">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 fill-current" />
+          ))}
+          <span className="ml-2 text-gray-600 font-medium text-xs sm:text-base">4.9/5 (247 avaliações)</span>
+        </div>
+      </div>
     </div>
 
   );
