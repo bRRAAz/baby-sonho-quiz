@@ -17,6 +17,7 @@ const QuizLanding = () => {
         "Sim, é uma luta toda noite",
         "Às vezes demora bastante",
         "Raramente demora tanto",
+        "Não, dorme rapidinho",
         "Não, dorme rapidinho"
       ]
     },
@@ -27,7 +28,8 @@ const QuizLanding = () => {
         "Sim, acordo várias vezes",
         "Acordo umas 2-3 vezes",
         "Acordo apenas 1 vez",
-        "Durmo a noite toda"
+        "Durmo a noite toda",
+        "Não, dorme rapidinho"
       ]
     },
     {
@@ -37,7 +39,8 @@ const QuizLanding = () => {
         "Sim, tentei tudo e nada resolve",
         "Algumas coisas funcionam às vezes",
         "Tenho algumas estratégias que funcionam",
-        "Encontrei o que funciona para meu bebê"
+        "Encontrei o que funciona para meu bebê",
+        "Não, dorme rapidinho"
       ]
     },
     {
@@ -47,7 +50,8 @@ const QuizLanding = () => {
         "Sim, estou exausto(a)",
         "Sim, bem cansado(a)",
         "Um pouco cansado(a)",
-        "Me sinto bem disposto(a)"
+        "Me sinto bem disposto(a)",
+        "Não, dorme rapidinho"
       ]
     },
     {
@@ -57,7 +61,8 @@ const QuizLanding = () => {
         "Sim, é uma guerra todas as noites",
         "Na maioria das noites é difícil",
         "Algumas noites são complicadas",
-        "Geralmente é tranquilo"
+        "Geralmente é tranquilo",
+        "Não, dorme rapidinho"
       ]
     }
   ];
@@ -101,7 +106,7 @@ const QuizLanding = () => {
               Descobrimos o que está acontecendo!
             </p>
           </CardHeader>
-          
+
           <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 md:p-8">
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 sm:p-6 rounded-lg border-l-4 border-blue-400">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
@@ -109,11 +114,11 @@ const QuizLanding = () => {
                 Seu diagnóstico
               </h3>
               <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-3 sm:mb-4">
-                Seu bebê pode estar preso num ciclo que sabota o sono dele (e o seu também). 
+                Seu bebê pode estar preso num ciclo que sabota o sono dele (e o seu também).
                 <strong className="text-blue-600"> A boa notícia?</strong> Isso tem solução — rápida, gentil e realista.
               </p>
               <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-                Descubra o método que já ajudou <strong className="text-purple-600">centenas de famílias</strong> a 
+                Descubra o método que já ajudou <strong className="text-purple-600">centenas de famílias</strong> a
                 recuperarem o sono, a paz e o bem-estar!
               </p>
             </div>
@@ -171,7 +176,7 @@ const QuizLanding = () => {
 
             <div className="text-center space-y-3 sm:space-y-4">
               <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-1 rounded-lg">
-                <Button 
+                <Button
                   className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
                   onClick={() => window.open('#', '_blank')}
                 >
@@ -179,7 +184,7 @@ const QuizLanding = () => {
                   🎁 QUERO O EBOOK AGORA!
                 </Button>
               </div>
-              
+
               <p className="text-green-700 font-semibold text-sm sm:text-base md:text-lg">
                 📱 Garante antes que acabe!
               </p>
@@ -201,8 +206,8 @@ const QuizLanding = () => {
                 </div>
               </div>
 
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 onClick={resetQuiz}
                 className="mt-4 sm:mt-6 text-gray-600 hover:text-gray-800 text-sm sm:text-base"
               >
@@ -232,7 +237,7 @@ const QuizLanding = () => {
               Descubra o que está atrapalhando as noites da sua família
             </p>
             <div className="mt-3 sm:mt-4 bg-white/20 rounded-full h-2">
-              <div 
+              <div
                 className="bg-yellow-300 h-2 rounded-full transition-all duration-500"
                 style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
               />
@@ -241,7 +246,7 @@ const QuizLanding = () => {
               Pergunta {currentQuestion + 1} de {questions.length}
             </p>
           </CardHeader>
-          
+
           <CardContent className="p-4 sm:p-6 flex-1 flex flex-col justify-center">
             <div className="flex-1 flex flex-col justify-center">
               <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-6 sm:mb-8 leading-relaxed text-center">
@@ -268,9 +273,8 @@ const QuizLanding = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-4 px-3 sm:py-8 sm:px-4">
-      <div className="max-w-4xl mx-auto">
-        {/* Quiz Start Card */}
-        <Card className="w-full max-w-2xl mx-auto shadow-2xl border-0 bg-white mb-6 sm:mb-8">
+      <div className="flex flex-col flex-1 max-w-4xl mx-auto">
+        <Card className="flex-1 flex flex-col w-full shadow-2xl border-0 bg-white mb-6 sm:mb-8">
           <CardHeader className="text-center bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6">
             <div className="flex justify-center mb-3 sm:mb-4">
               <div className="bg-yellow-300 p-3 sm:p-4 rounded-full">
@@ -284,9 +288,9 @@ const QuizLanding = () => {
               Faça este quiz rápido e descubra o que está atrapalhando as noites da sua família
             </p>
           </CardHeader>
-          
-          <CardContent className="p-4 sm:p-6 md:p-8">
-            <div className="text-center space-y-4 sm:space-y-6">
+
+          <CardContent className="p-4 sm:p-6 md:p-8 flex-grow">
+            <div className="text-center space-y-4 sm:space-y-6 h-full">
               <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-4 sm:p-6 rounded-lg border border-yellow-200">
                 <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3">O que você vai descobrir:</h3>
                 <div className="text-left space-y-2 text-gray-700 text-sm sm:text-base">
@@ -305,7 +309,7 @@ const QuizLanding = () => {
                 </div>
               </div>
 
-              <Button 
+              <Button
                 onClick={startQuiz}
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 sm:py-4 px-4 sm:px-8 text-base sm:text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
               >
@@ -319,19 +323,9 @@ const QuizLanding = () => {
             </div>
           </CardContent>
         </Card>
-
-        {/* Trust Indicators */}
-        <div className="text-center">
-          <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">Já ajudamos mais de 500 famílias a terem noites tranquilas</p>
-          <div className="flex justify-center items-center space-x-1 sm:space-x-2">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400 fill-current" />
-            ))}
-            <span className="ml-2 text-gray-600 font-medium text-sm sm:text-base">4.9/5 (247 avaliações)</span>
-          </div>
-        </div>
       </div>
     </div>
+
   );
 };
 
