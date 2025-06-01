@@ -1,14 +1,51 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Baby, Moon, Heart, CheckCircle, Star, Gift, Zap } from 'lucide-react';
-
+import { Baby, Moon, Heart, CheckCircle, Star, Gift, Zap, Clock, Brain, Shield } from 'lucide-react';
+import VideoPlayer from './videoPlayer';
+import CountdownTimer from './CountdownTimer';
 const QuizLanding = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [answers, setAnswers] = useState<string[]>([]);
   const [showQuiz, setShowQuiz] = useState(false);
-
+  const benefits = [
+    {
+      icon: Moon,
+      text: "Noites completas de sono",
+      description: "Seu bebê dormindo a noite toda"
+    },
+    {
+      icon: Heart,
+      text: "Relacionamentos mais fortes",
+      description: "Tempo de qualidade em família"
+    },
+    {
+      icon: Clock,
+      text: "Rotina simples",
+      description: "Fácil de seguir"
+    },
+    {
+      icon: Brain,
+      text: "Paz de espírito",
+      description: "Menos estresse noturno"
+    },
+    {
+      icon: Star,
+      text: "Energia renovada",
+      description: "Noites inteiras de descanso"
+    },
+    {
+      icon: Baby,
+      text: "Bebê mais feliz",
+      description: "Calmo e descansado"
+    },
+    {
+      icon: Shield,
+      text: "Fim do cansaço",
+      description: "Adeus madrugadas intermináveis"
+    },
+  ];
   const questions = [
     {
       id: 1,
@@ -84,9 +121,12 @@ const QuizLanding = () => {
     setShowQuiz(true);
   };
 
+  const targetDate = new Date();
+  targetDate.setMinutes(targetDate.getMinutes() + 15);
   if (showResult) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-between p-3 sm:p-4 flex-col">
+        <img src="./assets/logo_nenem.png" className="w-24" />
         <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white flex flex-col">
           <CardHeader className="text-center pb-4 bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6">
 
@@ -106,64 +146,70 @@ const QuizLanding = () => {
             </div>
 
             {/* Bloco de vídeo (VSL) */}
-            <div className="w-full max-w-xl mx-auto max-h-[600px] aspect-[9/16] rounded-lg overflow-hidden border border-gray-200 shadow-sm">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/V0F9AGgxJcc"
-                title="Vídeo Explicativo"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
+            <VideoPlayer></VideoPlayer>
 
 
             <Button
               className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
               onClick={() => window.open('#', '_blank')}
             >
-              <Zap className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
-              🎁 QUERO O EBOOK AGORA!
+
+              🎁 QUERO MEU BEBÊ DORMINDO JÁ!
             </Button>
 
 
 
-            <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-4 sm:p-6 rounded-lg border-2 border-purple-300">
-              <div className="text-center mb-4 sm:mb-6">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-purple-700 mb-2">
-                  💤 SONECA DOS SONHOS
+
+            <div className="bg-green-50 p-2 rounded-2xl border-2 border-green-300 shadow-md">
+              <div className="text-center mb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full mb-3 shadow-lg">
+                  <Gift className="h-6 w-6 text-white" />
+                </div>
+
+                <h2 className="text-xl font-bold bg-gradient-to-r from-emerald-700 via-teal-700 to-cyan-700 bg-clip-text text-transparent mb-2">
+                  O que você vai receber:
                 </h2>
-                <p className="text-base sm:text-lg md:text-xl font-semibold text-gray-800">
-                  O MÉTODO PROIBIDO QUE FAZ BEBÊ DORMIR COMO ANJO!
-                </p>
+
+                <div className="w-16 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full"></div>
+              </div>
+
+              <div className="space-y-2">
+                {benefits.map((benefit, index) => {
+                  const IconComponent = benefit.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="group flex items-center gap-3 bg-white/60 rounded-lg p-2 border border-gray-100/50 hover:bg-emerald-50/50 hover:border-emerald-200 transition-all duration-200"
+                    >
+                      {/* Compact Icon */}
+                      <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-lg group-hover:from-emerald-200 group-hover:to-teal-200 transition-all duration-200">
+                        <IconComponent className="h-4 w-4 text-emerald-600" />
+                      </div>
+
+                      {/* Compact Text */}
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-gray-900 text-sm leading-tight">
+                          {benefit.text}
+                        </h4>
+                        <p className="text-gray-600 text-xs leading-tight truncate">
+                          {benefit.description}
+                        </p>
+                      </div>
+
+                      {/* Success indicator */}
+                      <div className="flex-shrink-0">
+                        <CheckCircle className="h-6 w-6 text-emerald-500" />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="bg-green-50 p-4 sm:p-6 rounded-lg border-2 border-green-300">
-              <h3 className="text-base sm:text-lg md:text-xl font-bold text-green-700 mb-3 sm:mb-4 flex items-center">
-                <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
-                O que você vai receber:
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 text-sm sm:text-base text-gray-700">
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-2 text-base sm:text-lg">✅</span>
-                  <span>Método gentil e sem culpas</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-2 text-base sm:text-lg">✅</span>
-                  <span>Resultados em poucos dias</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-2 text-base sm:text-lg">✅</span>
-                  <span>Técnicas comprovadas</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-green-500 mr-2 text-base sm:text-lg">✅</span>
-                  <span>Rotina noturna perfeita</span>
-                </div>
-              </div>
+            <div className="mb-3 text-center">
+              <p className="text-lg text-red-600 font-semibold mb-1">⚡ OFERTA POR TEMPO LIMITADO</p>
+              <CountdownTimer targetDate={targetDate} />
             </div>
-
             <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 sm:p-6 rounded-lg border-2 border-yellow-400">
               <div className="text-center mb-3 sm:mb-4">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-orange-700 mb-2 flex items-center justify-center">
@@ -171,27 +217,26 @@ const QuizLanding = () => {
                   🎁 Bônus Exclusivo!
                 </h3>
                 <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-800">
-                  Checklist da Rotina Noturna Perfeita
+                  Áudio mágicos para acalmar seu bebê
                 </p>
-                <p className="text-xs sm:text-sm text-orange-600 font-medium">
-                  (Incluso gratuitamente!)
+                <p className="text-sm text-purple-600 font-semibold">
+                  Valor: <s>R$ 97,00</s> - GRÁTIS hoje!
                 </p>
               </div>
             </div>
 
             <div className="text-center space-y-3 sm:space-y-4">
+
               <Button
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
                 onClick={() => window.open('#', '_blank')}
               >
-                <Zap className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
-                🎁 QUERO O EBOOK AGORA!
+
+                🎁 QUERO MEU BEBÊ DORMINDO JÁ!
               </Button>
 
 
-              <p className="text-green-700 font-semibold text-sm sm:text-base md:text-lg">
-                📱 Garante antes que acabe!
-              </p>
+
 
               <div className="flex items-center justify-center space-x-3 sm:space-x-6 text-xs sm:text-sm text-gray-600">
                 <div className="flex items-center">
@@ -220,13 +265,14 @@ const QuizLanding = () => {
             </div>
           </CardContent>
         </Card>
-      </div>
+      </div >
     );
   }
 
   if (showQuiz) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-start justify-start p-3 sm:p-4">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-start p-3 sm:p-4 flex-col">
+        <img src="./assets/logo_nenem.png" className="w-24" />
         <Card className="w-full max-h-600px max-w-xl mx-auto shadow-xl border-0 bg-white flex flex-col">
           <CardHeader className="text-center bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6 flex-shrink-0">
 
@@ -272,12 +318,13 @@ const QuizLanding = () => {
   return (
 
 
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-between p-3 sm:p-4 flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-start p-3 sm:p-4 flex-col">
+      <img src="./assets/logo_nenem.png" className="w-24" />
       <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white flex flex-col">
         <CardHeader className="text-center bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6 flex-shrink-0">
 
-          <CardTitle className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
-            💤 Seu bebê custa a dormir?
+          <CardTitle className="text-lg sm:text-xl font-bold mb-2">
+            🌙 Quiz do Sono do Bebê
           </CardTitle>
           <p className="text-blue-100 text-sm sm:text-base">
             Faça este quiz rápido e descubra o que está atrapalhando as noites da sua família
@@ -312,8 +359,7 @@ const QuizLanding = () => {
               onClick={startQuiz}
               className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 sm:py-4 px-4 sm:px-8 text-base sm:text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
             >
-              <Baby className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-              🚀 COMEÇAR O QUIZ AGORA!
+              COMEÇAR O QUIZ AGORA!
             </Button>
 
             <p className="text-xs sm:text-sm text-gray-500">
@@ -336,6 +382,7 @@ const QuizLanding = () => {
     </div>
 
   );
+
 };
 
 export default QuizLanding;
