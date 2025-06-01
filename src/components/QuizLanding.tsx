@@ -91,14 +91,10 @@ const QuizLanding = () => {
 
   if (showResult) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-4 px-3 sm:py-8 sm:px-4">
-        <Card className="w-full max-w-3xl mx-auto shadow-2xl border-0 bg-white">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-between p-3 sm:p-4 flex-col">
+        <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white flex flex-col">
           <CardHeader className="text-center pb-4 bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6">
-            <div className="flex justify-center mb-3 sm:mb-4">
-              <div className="bg-yellow-300 p-3 sm:p-4 rounded-full">
-                <Star className="h-8 w-8 sm:h-12 sm:w-12 text-blue-600" />
-              </div>
-            </div>
+
             <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">
               🌙 Resultado do seu Quiz
             </CardTitle>
@@ -108,20 +104,39 @@ const QuizLanding = () => {
           </CardHeader>
 
           <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 md:p-8">
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 sm:p-6 rounded-lg border-l-4 border-blue-400">
+            <div className="bg-gradient-to-r from-red-50 to-yellow-50 p-4 sm:p-6 rounded-lg border-l-4 border-red-400">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
-                <Heart className="h-5 w-5 sm:h-6 sm:w-6 mr-2 text-pink-500" />
-                Seu diagnóstico
+
+                Alerta: O sono do seu bebê está fora do padrão ideal
               </h3>
               <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-3 sm:mb-4">
-                Seu bebê pode estar preso num ciclo que sabota o sono dele (e o seu também).
-                <strong className="text-blue-600"> A boa notícia?</strong> Isso tem solução — rápida, gentil e realista.
+                <strong className="text-red-600">Seu resultado:</strong> Risco de interferência no sono saudável está em <strong>87/100</strong>
               </p>
-              <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-                Descubra o método que já ajudou <strong className="text-purple-600">centenas de famílias</strong> a
-                recuperarem o sono, a paz e o bem-estar!
-              </p>
+
             </div>
+
+            {/* Bloco de vídeo (VSL) */}
+            <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg border border-gray-200">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/SEU_VIDEO_ID"
+                title="Vídeo Explicativo"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+
+            <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-1 rounded-lg">
+              <Button
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+                onClick={() => window.open('#', '_blank')}
+              >
+                <Zap className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
+                🎁 QUERO O EBOOK AGORA!
+              </Button>
+            </div>
+
 
             <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-4 sm:p-6 rounded-lg border-2 border-purple-300">
               <div className="text-center mb-4 sm:mb-6">
@@ -270,7 +285,7 @@ const QuizLanding = () => {
   return (
 
 
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-start p-3 sm:p-4 flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-between p-3 sm:p-4 flex-col">
       <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white flex flex-col">
         <CardHeader className="text-center bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6 flex-shrink-0">
 
