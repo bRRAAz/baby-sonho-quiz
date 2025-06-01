@@ -50,6 +50,7 @@ export default function VideoPlayer() {
                 src="/assets/TESTE QUIZ.mp4"
                 className="w-full h-full custom-video"
                 autoPlay
+                loop
                 controls
                 playsInline
                 muted
@@ -61,11 +62,6 @@ export default function VideoPlayer() {
                 video::-webkit-media-controls-start-playback-button {
                     display: none !important;
                     pointer-events: none;
-                }
-
-                /* Oculta botão grande do centro no iOS/Safari */
-                video::-webkit-media-controls-overlay-play-button {
-                    display: none !important;
                 }
 
                 /* Oculta o botão de play/pause lateral */
