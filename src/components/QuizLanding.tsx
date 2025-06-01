@@ -106,10 +106,10 @@ const QuizLanding = () => {
             </div>
 
             {/* Bloco de vídeo (VSL) */}
-            <div className="w-full max-w-xl mx-auto aspect-[9/16] rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+            <div className="w-full max-w-xl mx-auto max-h-[600px] aspect-[9/16] rounded-lg overflow-hidden border border-gray-200 shadow-sm">
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/SEU_VIDEO_ID"
+                src="https://www.youtube.com/embed/V0F9AGgxJcc"
                 title="Vídeo Explicativo"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
