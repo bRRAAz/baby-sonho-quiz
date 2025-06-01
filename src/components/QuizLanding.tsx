@@ -17,7 +17,6 @@ const QuizLanding = () => {
         "Sim, é uma luta toda noite",
         "Às vezes demora bastante",
         "Raramente demora tanto",
-        "Não, dorme rapidinho",
         "Não, dorme rapidinho"
       ]
     },
@@ -28,8 +27,7 @@ const QuizLanding = () => {
         "Sim, acordo várias vezes",
         "Acordo umas 2-3 vezes",
         "Acordo apenas 1 vez",
-        "Durmo a noite toda",
-        "Não, dorme rapidinho"
+        "Durmo a noite toda"
       ]
     },
     {
@@ -39,8 +37,7 @@ const QuizLanding = () => {
         "Sim, tentei tudo e nada resolve",
         "Algumas coisas funcionam às vezes",
         "Tenho algumas estratégias que funcionam",
-        "Encontrei o que funciona para meu bebê",
-        "Não, dorme rapidinho"
+        "Encontrei o que funciona para meu bebê"
       ]
     },
     {
@@ -50,8 +47,7 @@ const QuizLanding = () => {
         "Sim, estou exausto(a)",
         "Sim, bem cansado(a)",
         "Um pouco cansado(a)",
-        "Me sinto bem disposto(a)",
-        "Não, dorme rapidinho"
+        "Me sinto bem disposto(a)"
       ]
     },
     {
@@ -61,8 +57,7 @@ const QuizLanding = () => {
         "Sim, é uma guerra todas as noites",
         "Na maioria das noites é difícil",
         "Algumas noites são complicadas",
-        "Geralmente é tranquilo",
-        "Não, dorme rapidinho"
+        "Geralmente é tranquilo"
       ]
     }
   ];
@@ -253,9 +248,7 @@ const QuizLanding = () => {
                 style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
               />
             </div>
-            <p className="text-xs mt-2 text-blue-100">
-              Pergunta {currentQuestion + 1} de {questions.length}
-            </p>
+
           </CardHeader>
 
           <CardContent className="flex-1 flex flex-col justify-center">
