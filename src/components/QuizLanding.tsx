@@ -99,19 +99,14 @@ const QuizLanding = () => {
           </CardHeader>
 
           <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 md:p-8">
-            <div className="bg-gradient-to-r from-red-50 to-yellow-50 p-4 sm:p-6 rounded-lg border-l-4 border-red-400">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
-
-                Alerta: O sono do seu bebê está fora do padrão ideal
-              </h3>
-              <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-3 sm:mb-4">
+            <div className="bg-gradient-to-r from-red-50 to-yellow-50 p-4 rounded-lg border-l-4 border-red-400">
+              <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
                 <strong className="text-red-600">Seu resultado:</strong> Risco de interferência no sono saudável está em <strong>87/100</strong>
               </p>
-
             </div>
 
             {/* Bloco de vídeo (VSL) */}
-            <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg border border-gray-200">
+            <div className="w-full max-w-xl mx-auto aspect-[9/16] rounded-lg overflow-hidden border border-gray-200 shadow-sm">
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/SEU_VIDEO_ID"
@@ -122,15 +117,15 @@ const QuizLanding = () => {
               ></iframe>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-1 rounded-lg">
-              <Button
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
-                onClick={() => window.open('#', '_blank')}
-              >
-                <Zap className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
-                🎁 QUERO O EBOOK AGORA!
-              </Button>
-            </div>
+
+            <Button
+              className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+              onClick={() => window.open('#', '_blank')}
+            >
+              <Zap className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
+              🎁 QUERO O EBOOK AGORA!
+            </Button>
+
 
 
             <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-4 sm:p-6 rounded-lg border-2 border-purple-300">
@@ -185,15 +180,14 @@ const QuizLanding = () => {
             </div>
 
             <div className="text-center space-y-3 sm:space-y-4">
-              <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-1 rounded-lg">
-                <Button
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
-                  onClick={() => window.open('#', '_blank')}
-                >
-                  <Zap className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
-                  🎁 QUERO O EBOOK AGORA!
-                </Button>
-              </div>
+              <Button
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+                onClick={() => window.open('#', '_blank')}
+              >
+                <Zap className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
+                🎁 QUERO O EBOOK AGORA!
+              </Button>
+
 
               <p className="text-green-700 font-semibold text-sm sm:text-base md:text-lg">
                 📱 Garante antes que acabe!
