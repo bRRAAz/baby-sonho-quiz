@@ -271,13 +271,8 @@ const QuizLanding = () => {
 
 
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center p-3 sm:p-4 flex-col">
-      <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white min-h-[calc(100vh-1.5rem)] sm:min-h-[calc(100vh-2rem)] flex flex-col">
+      <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white flex flex-col">
         <CardHeader className="text-center bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6 flex-shrink-0">
-          <div className="flex justify-center mb-3 sm:mb-4">
-            <div className="bg-yellow-300 p-3 sm:p-4 rounded-full">
-              <Baby className="h-10 w-10 sm:h-12 sm:w-12 text-blue-600" />
-            </div>
-          </div>
           <CardTitle className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
             💤 Seu bebê custa a dormir?
           </CardTitle>
