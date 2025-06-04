@@ -16,7 +16,7 @@ export default function VideoPlayer() {
                 }
             };
 
-            //playVideo();
+            playVideo();
 
             // Reforça que o vídeo não deve pausar
             const handlePause = () => {
@@ -46,6 +46,7 @@ export default function VideoPlayer() {
     return (
         <div className="w-full max-w-xl mx-auto aspect-[9/16] rounded-lg overflow-hidden border border-gray-200 shadow-sm relative">
             <video
+                ref={videoRef}
                 src="/assets/TESTE QUIZ.mp4"
                 className="w-full h-full custom-video"
                 autoPlay
