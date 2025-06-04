@@ -46,7 +46,6 @@ export default function VideoPlayer() {
     return (
         <div className="w-full max-w-xl mx-auto aspect-[9/16] rounded-lg overflow-hidden border border-gray-200 shadow-sm relative">
             <video
-                ref={videoRef}
                 src="/assets/TESTE QUIZ.mp4"
                 className="w-full h-full custom-video"
                 autoPlay
@@ -55,7 +54,27 @@ export default function VideoPlayer() {
                 playsInline
                 muted
             />
+            <style>{`
+                /* Oculta botão central (pausar/tocar) e inicial */
+                ::cue { display: none; } /* legenda */
+                video::-webkit-media-controls-play-button,
+                video::-webkit-media-controls-start-playback-button {
+                    display: none !important;
+                    pointer-events: none;
+                }
 
+                /* Oculta botão grande do centro no iOS/Safari */
+                video::-webkit-media-controls-overlay-play-button {
+                    display: none !important;
+                }
+
+                /* Oculta o botão de play/pause lateral */
+                video::-webkit-media-controls-panel > button:first-child {
+                    display: none !important;
+                }
+
+                
+            `}</style>
         </div>
     );
 }
