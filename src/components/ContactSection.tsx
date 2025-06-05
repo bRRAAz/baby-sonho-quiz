@@ -50,7 +50,7 @@ const ContactSection = () => {
               <p className="text-sm text-gray-600">contato@noitedepaz.com.br</p>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
             <MessageCircle className="h-5 w-5 text-green-600" />
             <div>
@@ -58,12 +58,47 @@ const ContactSection = () => {
               <p className="text-sm text-gray-600">(11) 99999-9999</p>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
             <Clock className="h-5 w-5 text-blue-600" />
             <div>
               <p className="font-semibold text-blue-800">Horário de Atendimento</p>
               <p className="text-sm text-gray-600">Segunda a Sexta: 9h às 18h</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+
+      {/* Garantias e Segurança */}
+      <Card className="bg-white shadow-lg border-0">
+        <CardContent className="p-4">
+          <h3 className="text-lg font-bold text-center text-gray-800 mb-4">
+            🛡️ Sua Compra Está Protegida
+          </h3>
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <Shield className="h-5 w-5 text-green-600" />
+              <div>
+                <p className="font-semibold text-sm text-gray-800">Garantia de 30 dias</p>
+                <p className="text-xs text-gray-600">100% do seu dinheiro de volta se não funcionar</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Heart className="h-5 w-5 text-red-500" />
+              <div>
+                <p className="font-semibold text-sm text-gray-800">Método aprovado por especialistas</p>
+                <p className="text-xs text-gray-600">Desenvolvido por consultoras em sono infantil</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <MessageCircle className="h-5 w-5 text-blue-600" />
+              <div>
+                <p className="font-semibold text-sm text-gray-800">Suporte completo</p>
+                <p className="text-xs text-gray-600">Grupo VIP com especialistas 24h</p>
+              </div>
             </div>
           </div>
         </CardContent>
@@ -97,40 +132,6 @@ const ContactSection = () => {
               )}
             </div>
           ))}
-        </CardContent>
-      </Card>
-
-      {/* Garantias e Segurança */}
-      <Card className="bg-white shadow-lg border-0">
-        <CardContent className="p-4">
-          <h3 className="text-lg font-bold text-center text-gray-800 mb-4">
-            🛡️ Sua Compra Está Protegida
-          </h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <Shield className="h-5 w-5 text-green-600" />
-              <div>
-                <p className="font-semibold text-sm text-gray-800">Garantia de 30 dias</p>
-                <p className="text-xs text-gray-600">100% do seu dinheiro de volta se não funcionar</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-3">
-              <Heart className="h-5 w-5 text-red-500" />
-              <div>
-                <p className="font-semibold text-sm text-gray-800">Método aprovado por especialistas</p>
-                <p className="text-xs text-gray-600">Desenvolvido por consultoras em sono infantil</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-3">
-              <MessageCircle className="h-5 w-5 text-blue-600" />
-              <div>
-                <p className="font-semibold text-sm text-gray-800">Suporte completo</p>
-                <p className="text-xs text-gray-600">Grupo VIP com especialistas 24h</p>
-              </div>
-            </div>
-          </div>
         </CardContent>
       </Card>
     </div>
