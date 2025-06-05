@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Baby, Moon, Heart, CheckCircle, Star, Gift, Zap, Clock, Brain, Shield } from 'lucide-react';
+import { Baby, Moon, Heart, CheckCircle, Star, Gift, Zap, Clock, Brain, Shield, Phone, Mail, ChevronDown, ChevronUp } from 'lucide-react';
 import VideoPlayer from './videoPlayer';
 import CountdownTimer from './CountdownTimer';
+import SocialProofCarousel from './SocialProofCarousel';
+import ContactSection from './ContactSection';
+
 const QuizLanding = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [answers, setAnswers] = useState<string[]>([]);
   const [showQuiz, setShowQuiz] = useState(false);
+  const [resultScore, setResultScore] = useState(0);
+
   const benefits = [
     {
       icon: Moon,
@@ -46,6 +51,30 @@ const QuizLanding = () => {
       description: "Adeus madrugadas intermináveis"
     },
   ];
+
+  const bonuses = [
+    {
+      title: "Áudios Mágicos para Acalmar",
+      originalPrice: "R$ 97,00",
+      description: "Sons especiais que fazem seu bebê relaxar instantaneamente"
+    },
+    {
+      title: "Guia de Rotina Noturna",
+      originalPrice: "R$ 67,00",
+      description: "Passo a passo completo para criar a rotina perfeita"
+    },
+    {
+      title: "Técnicas de Massagem Relaxante",
+      originalPrice: "R$ 47,00",
+      description: "Massagens que preparam o bebê para o sono profundo"
+    },
+    {
+      title: "Grupo VIP de Mães",
+      originalPrice: "R$ 197,00",
+      description: "Comunidade exclusiva com suporte 24h de especialistas"
+    }
+  ];
+
   const questions = [
     {
       id: 1,
@@ -106,6 +135,9 @@ const QuizLanding = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
+      // Generate random score between 85 and 100
+      const randomScore = Math.floor(Math.random() * (100 - 85 + 1)) + 85;
+      setResultScore(randomScore);
       setShowResult(true);
     }
   };
@@ -115,6 +147,7 @@ const QuizLanding = () => {
     setAnswers([]);
     setShowResult(false);
     setShowQuiz(false);
+    setResultScore(0);
   };
 
   const startQuiz = () => {
@@ -123,13 +156,13 @@ const QuizLanding = () => {
 
   const targetDate = new Date();
   targetDate.setMinutes(targetDate.getMinutes() + 15);
+
   if (showResult) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-between p-3 sm:p-4 flex-col">
         <img src="./assets/logo_nenem.png" className="w-24" />
         <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white flex flex-col">
           <CardHeader className="text-center pb-4 bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-t-lg p-4 sm:p-6">
-
             <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">
               🌙 Resultado do seu Quiz
             </CardTitle>
@@ -141,24 +174,77 @@ const QuizLanding = () => {
           <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 md:p-8">
             <div className="bg-gradient-to-r from-red-50 to-yellow-50 p-4 rounded-lg border-l-4 border-red-400">
               <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-                <strong className="text-red-600">Seu resultado:</strong> Risco de interferência no sono saudável está em <strong>87/100</strong>
+                <strong className="text-red-600">Seu resultado:</strong> Risco de interferência no sono saudável está em <strong>{resultScore}/100</strong>
               </p>
             </div>
 
-            {/* Bloco de vídeo (VSL) */}
-            <VideoPlayer></VideoPlayer>
+            {/* Produto Principal - Preço */}
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg border-2 border-green-300">
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-green-700 mb-2">🌙 Método Noite de Paz</h3>
+                <p className="text-gray-700 mb-3">O método completo que já transformou mais de 500 famílias</p>
+                <div className="flex items-center justify-center gap-3">
+                  <span className="text-2xl font-bold text-green-600">R$ 197,00</span>
+                  <span className="text-lg text-gray-500 line-through">R$ 497,00</span>
+                </div>
+                <p className="text-sm text-green-600 font-semibold mt-1">60% OFF - Oferta limitada!</p>
+              </div>
+            </div>
 
+            {/* Copy sobre o produto */}
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+              <h3 className="text-lg font-bold text-blue-800 mb-3">Por que o Método Noite de Paz funciona?</h3>
+              <div className="space-y-2 text-sm text-gray-700">
+                <p>✅ <strong>Método gentil e respeitoso:</strong> Sem deixar o bebê chorar sozinho</p>
+                <p>✅ <strong>Resultados em 7 dias:</strong> Mais de 90% das famílias veem melhora na primeira semana</p>
+                <p>✅ <strong>Funciona para todas as idades:</strong> De 4 meses a 3 anos</p>
+                <p>✅ <strong>Suporte completo:</strong> Grupo VIP com especialistas 24h</p>
+              </div>
+            </div>
+
+            <VideoPlayer />
 
             <Button
               className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
               onClick={() => window.open('#', '_blank')}
             >
-
               🎁 QUERO MEU BEBÊ DORMINDO JÁ!
             </Button>
 
+            {/* Lista de Bônus Detalhada */}
+            <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 sm:p-6 rounded-lg border-2 border-yellow-400">
+              <div className="text-center mb-4">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-orange-700 mb-2 flex items-center justify-center">
+                  <Gift className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
+                  🎁 Bônus Exclusivos!
+                </h3>
+                <p className="text-sm sm:text-base font-semibold text-gray-800 mb-4">
+                  Receba GRÁTIS hoje estes bônus incríveis:
+                </p>
+              </div>
 
+              <div className="space-y-3">
+                {bonuses.map((bonus, index) => (
+                  <div key={index} className="bg-white/70 p-3 rounded-lg border border-yellow-300">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="font-bold text-gray-800 text-sm">{bonus.title}</h4>
+                      <div className="text-right">
+                        <span className="text-red-500 line-through text-sm">{bonus.originalPrice}</span>
+                        <span className="block text-green-600 font-bold text-sm">GRÁTIS HOJE!</span>
+                      </div>
+                    </div>
+                    <p className="text-xs text-gray-600">{bonus.description}</p>
+                  </div>
+                ))}
+              </div>
 
+              <div className="mt-4 text-center p-3 bg-green-100 rounded-lg border border-green-300">
+                <p className="text-sm font-bold text-green-700">
+                  Valor total dos bônus: <span className="line-through">R$ 408,00</span>
+                </p>
+                <p className="text-lg font-bold text-green-600">GRÁTIS HOJE!</p>
+              </div>
+            </div>
 
             <div className="bg-green-50 p-2 rounded-2xl border-2 border-green-300 shadow-md">
               <div className="text-center mb-4">
@@ -167,7 +253,7 @@ const QuizLanding = () => {
                 </div>
 
                 <h2 className="text-xl font-bold bg-gradient-to-r from-emerald-700 via-teal-700 to-cyan-700 bg-clip-text text-transparent mb-2">
-                  O que você vai receber:
+                  O que você vai conseguir:
                 </h2>
 
                 <div className="w-16 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full"></div>
@@ -181,12 +267,10 @@ const QuizLanding = () => {
                       key={index}
                       className="group flex items-center gap-3 bg-white/60 rounded-lg p-2 border border-gray-100/50 hover:bg-emerald-50/50 hover:border-emerald-200 transition-all duration-200"
                     >
-                      {/* Compact Icon */}
                       <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-lg group-hover:from-emerald-200 group-hover:to-teal-200 transition-all duration-200">
                         <IconComponent className="h-4 w-4 text-emerald-600" />
                       </div>
 
-                      {/* Compact Text */}
                       <div className="flex-1 min-w-0">
                         <h4 className="font-semibold text-gray-900 text-sm leading-tight">
                           {benefit.text}
@@ -196,7 +280,6 @@ const QuizLanding = () => {
                         </p>
                       </div>
 
-                      {/* Success indicator */}
                       <div className="flex-shrink-0">
                         <CheckCircle className="h-6 w-6 text-emerald-500" />
                       </div>
@@ -206,37 +289,34 @@ const QuizLanding = () => {
               </div>
             </div>
 
+            {/* Carrossel de Provas Sociais */}
+            <SocialProofCarousel />
+
             <div className="mb-3 text-center">
               <p className="text-lg text-red-600 font-semibold mb-1">⚡ OFERTA POR TEMPO LIMITADO</p>
               <CountdownTimer targetDate={targetDate} />
             </div>
-            <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 sm:p-6 rounded-lg border-2 border-yellow-400">
-              <div className="text-center mb-3 sm:mb-4">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-orange-700 mb-2 flex items-center justify-center">
-                  <Gift className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
-                  🎁 Bônus Exclusivo!
-                </h3>
-                <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-800">
-                  Áudio mágicos para acalmar seu bebê
-                </p>
-                <p className="text-sm text-purple-600 font-semibold">
-                  Valor: <s>R$ 97,00</s> - GRÁTIS hoje!
+
+            {/* Mais copy sobre garantia e resultados */}
+            <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+              <h3 className="text-lg font-bold text-purple-800 mb-3 text-center">🛡️ Garantia de 30 dias</h3>
+              <p className="text-sm text-gray-700 text-center mb-3">
+                Se você não ver resultados em 30 dias, devolvemos 100% do seu dinheiro. Sem perguntas, sem complicação.
+              </p>
+              <div className="text-center">
+                <p className="text-xs text-purple-600 font-semibold">
+                  Mais de 500 famílias já transformaram suas noites com o Método Noite de Paz
                 </p>
               </div>
             </div>
 
             <div className="text-center space-y-3 sm:space-y-4">
-
               <Button
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
                 onClick={() => window.open('#', '_blank')}
               >
-
                 🎁 QUERO MEU BEBÊ DORMINDO JÁ!
               </Button>
-
-
-
 
               <div className="flex items-center justify-center space-x-3 sm:space-x-6 text-xs sm:text-sm text-gray-600">
                 <div className="flex items-center">
@@ -265,7 +345,10 @@ const QuizLanding = () => {
             </div>
           </CardContent>
         </Card>
-      </div >
+
+        {/* Seção de Contato e Informações */}
+        <ContactSection />
+      </div>
     );
   }
 
