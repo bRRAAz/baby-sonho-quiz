@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Baby, Moon, Heart, CheckCircle, Star, Gift, Zap, Clock, Brain, Shield, Phone, Mail, ChevronDown, ChevronUp } from 'lucide-react';
 import VideoPlayer from './videoPlayer';
 import CountdownTimer from './CountdownTimer';
-import SocialProofCarousel from './SocialProofCarousel';
+import ImageCarousel from './ImageCarousel';
 import ContactSection from './ContactSection';
 
 const QuizLanding = () => {
@@ -178,8 +178,6 @@ const QuizLanding = () => {
               </p>
             </div>
 
-
-
             {/* Copy sobre o produto */}
             <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
               <h3 className="text-lg font-bold text-blue-800 mb-3">Por que o Método Noite de Paz funciona?</h3>
@@ -193,7 +191,7 @@ const QuizLanding = () => {
 
             <VideoPlayer />
             <Button
-              className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+              className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200 animate-pulse"
               onClick={() => window.open('#', '_blank')}
             >
               🎁 QUERO MEU BEBÊ DORMINDO JÁ!
@@ -216,13 +214,12 @@ const QuizLanding = () => {
                 <p className="text-sm text-green-600 font-semibold mt-1">60% OFF - Oferta limitada!</p>
               </div>
               <Button
-                className="mt-4 w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+                className="mt-4 w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200 animate-pulse"
                 onClick={() => window.open('#', '_blank')}
               >
                 🎁 QUERO MEU BEBÊ DORMINDO JÁ!
               </Button>
             </div>
-
 
             {/* Lista de Bônus Detalhada */}
             <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 sm:p-6 rounded-lg border-2 border-yellow-400">
@@ -232,7 +229,7 @@ const QuizLanding = () => {
                   🎁 Bônus Exclusivos!
                 </h3>
                 <p className="text-sm sm:text-base font-semibold text-gray-800 mb-4">
-                  Receba GRÁTIS hoje estes bônus incríveis:
+                  Receba GRÁTIS estes bônus incríveis:
                 </p>
               </div>
 
@@ -243,7 +240,7 @@ const QuizLanding = () => {
                       <h4 className="font-bold text-gray-800 text-sm">{bonus.title}</h4>
                       <div className="text-right">
                         <span className="text-red-500 line-through text-sm">{bonus.originalPrice}</span>
-                        <span className="block text-green-600 font-bold text-sm">GRÁTIS HOJE!</span>
+                        <span className="block text-green-600 font-bold text-sm">GRÁTIS!</span>
                       </div>
                     </div>
                     <p className="text-xs text-gray-600">{bonus.description}</p>
@@ -255,13 +252,9 @@ const QuizLanding = () => {
                 <p className="text-sm font-bold text-green-700">
                   Valor total dos bônus: <span className="line-through">R$ 408,00</span>
                 </p>
-                <p className="text-lg font-bold text-green-600">GRÁTIS HOJE!</p>
+                <p className="text-lg font-bold text-green-600">GRÁTIS!</p>
               </div>
-
-
             </div>
-
-
 
             <div className="bg-green-50 p-2 rounded-2xl border-2 border-green-300 shadow-md">
               <div className="text-center mb-4">
@@ -306,9 +299,8 @@ const QuizLanding = () => {
               </div>
             </div>
 
-            {/* Carrossel de Provas Sociais */}
-            <SocialProofCarousel />
-
+            {/* Carrossel de Imagens */}
+            <ImageCarousel />
 
             {/* Mais copy sobre garantia e resultados */}
             <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
@@ -325,7 +317,7 @@ const QuizLanding = () => {
 
             <div className="text-center space-y-3 sm:space-y-4">
               <Button
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200 animate-pulse"
                 onClick={() => window.open('#', '_blank')}
               >
                 🎁 QUERO MEU BEBÊ DORMINDO JÁ!
@@ -361,6 +353,16 @@ const QuizLanding = () => {
 
         {/* Seção de Contato e Informações */}
         <ContactSection />
+
+        {/* Rodapé com Copyright */}
+        <footer className="w-full max-w-xl mx-auto mt-6 text-center py-4 border-t border-gray-200">
+          <p className="text-xs text-gray-500">
+            © 2025 Método Noite de Paz. Todos os direitos reservados.
+          </p>
+          <p className="text-xs text-gray-400 mt-1">
+            CNPJ: 00.000.000/0001-00 | contato@noitedepaz.com.br
+          </p>
+        </footer>
       </div>
     );
   }
@@ -412,8 +414,6 @@ const QuizLanding = () => {
   }
 
   return (
-
-
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-start p-3 sm:p-4 flex-col">
       <img src="./assets/logo_nenem.png" className="w-24" />
       <Card className="w-full max-w-xl mx-auto shadow-xl border-0 bg-white flex flex-col">
@@ -461,8 +461,6 @@ const QuizLanding = () => {
             <p className="text-xs sm:text-sm text-gray-500">
               ⏱️ Apenas 2 minutos • 100% gratuito • Resultados instantâneos
             </p>
-
-
           </div>
         </CardContent>
       </Card>
@@ -476,9 +474,7 @@ const QuizLanding = () => {
         </div>
       </div>
     </div>
-
   );
-
 };
 
 export default QuizLanding;
