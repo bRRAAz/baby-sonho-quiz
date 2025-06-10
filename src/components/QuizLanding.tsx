@@ -6,6 +6,8 @@ import VideoPlayer from './videoPlayer';
 import CountdownTimer from './CountdownTimer';
 import ImageCarousel from './ImageCarousel';
 import ContactSection from './ContactSection';
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 const QuizLanding = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -137,7 +139,9 @@ const QuizLanding = () => {
     document.head.appendChild(script);
 
     return () => {
-      document.head.removeChild(script);
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
     };
   }, []);
 
@@ -185,14 +189,18 @@ const QuizLanding = () => {
         <Card className="w-full max-w-md mx-auto shadow-xl border-0 bg-white">
           <CardContent className="p-8 text-center">
             <div className="flex justify-center mb-6">
-              <dotlottie-player 
-                src="https://lottie.host/3782b314-73dd-4af5-b2de-6a41aba55921/5vAxTlD93H.lottie" 
-                background="transparent" 
-                speed="1" 
-                style={{ width: '200px', height: '200px' }}
-                loop 
-                autoplay>
-              </dotlottie-player>
+              <div 
+                dangerouslySetInnerHTML={{
+                  __html: `<dotlottie-player 
+                    src="https://lottie.host/3782b314-73dd-4af5-b2de-6a41aba55921/5vAxTlD93H.lottie" 
+                    background="transparent" 
+                    speed="1" 
+                    style="width: 200px; height: 200px;"
+                    loop 
+                    autoplay>
+                  </dotlottie-player>`
+                }}
+              />
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-3">
               Analisando suas respostas...
@@ -214,6 +222,31 @@ const QuizLanding = () => {
   }
 
   if (showResult) {
+    // Dados para o gráfico
+    const chartData = [
+      { 
+        name: 'Interferência no Sono', 
+        value: resultScore, 
+        fill: '#ef4444' 
+      },
+      { 
+        name: 'Sono Saudável', 
+        value: 100 - resultScore, 
+        fill: '#22c55e' 
+      }
+    ];
+
+    const chartConfig = {
+      interferencia: {
+        label: "Interferência no Sono",
+        color: "#ef4444"
+      },
+      saudavel: {
+        label: "Sono Saudável", 
+        color: "#22c55e"
+      }
+    };
+
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-between p-3 sm:p-4 flex-col">
         <img src="./assets/logo_nenem.png" className="w-24" />
@@ -228,10 +261,46 @@ const QuizLanding = () => {
           </CardHeader>
 
           <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 md:p-8">
+            {/* Gráfico do Resultado */}
             <div className="bg-gradient-to-r from-red-50 to-yellow-50 p-4 rounded-lg border-l-4 border-red-400">
-              <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-                <strong className="text-red-600">Seu resultado:</strong> Risco de interferência no sono saudável está em <strong>{resultScore}/100</strong>
-              </p>
+              <h3 className="text-lg font-bold text-red-600 mb-4 text-center">
+                Análise do Sono do seu Bebê
+              </h3>
+              
+              <div className="flex flex-col items-center">
+                <ChartContainer
+                  config={chartConfig}
+                  className="mx-auto aspect-square max-h-[250px]"
+                >
+                  <PieChart>
+                    <ChartTooltip
+                      cursor={false}
+                      content={<ChartTooltipContent hideLabel />}
+                    />
+                    <Pie
+                      data={chartData}
+                      dataKey="value"
+                      nameKey="name"
+                      innerRadius={60}
+                      strokeWidth={5}
+                    >
+                      {chartData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.fill} />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </ChartContainer>
+                
+                <div className="text-center mt-4">
+                  <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
+                    <strong className="text-red-600">Risco de interferência no sono:</strong>
+                  </p>
+                  <p className="text-3xl font-bold text-red-600 mb-2">{resultScore}%</p>
+                  <p className="text-sm text-gray-600">
+                    Seu bebê está enfrentando dificuldades significativas para dormir
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Copy sobre o produto */}
@@ -365,9 +434,7 @@ const QuizLanding = () => {
                         <h4 className="font-semibold text-gray-900 text-sm leading-tight">
                           {benefit.text}
                         </h4>
-                        <p className="text-gray-600 text-xs leading-tight truncate">
-                          {benefit.description}
-                        </p>
+                        <p className="text-xs text-gray-600">{benefit.description}</p>
                       </div>
 
                       <div className="flex-shrink-0">
