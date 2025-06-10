@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Baby, Moon, Heart, CheckCircle, Star, Gift, Zap, Clock, Brain, Shield, Phone, Mail, ChevronDown, ChevronUp } from 'lucide-react';
@@ -10,6 +10,7 @@ import ContactSection from './ContactSection';
 const QuizLanding = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
   const [answers, setAnswers] = useState<string[]>([]);
   const [showQuiz, setShowQuiz] = useState(false);
   const [resultScore, setResultScore] = useState(0);
@@ -128,6 +129,18 @@ const QuizLanding = () => {
     }
   ];
 
+  // Add the script for dotlottie player when component mounts
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs';
+    script.type = 'module';
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   const handleAnswer = (answer: string) => {
     const newAnswers = [...answers, answer];
     setAnswers(newAnswers);
@@ -135,10 +148,16 @@ const QuizLanding = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      // Generate random score between 85 and 100
-      const randomScore = Math.floor(Math.random() * (100 - 85 + 1)) + 85;
-      setResultScore(randomScore);
-      setShowResult(true);
+      // Show loading instead of going directly to results
+      setShowLoading(true);
+      
+      // Generate random score and show results after 3 seconds
+      setTimeout(() => {
+        const randomScore = Math.floor(Math.random() * (100 - 85 + 1)) + 85;
+        setResultScore(randomScore);
+        setShowLoading(false);
+        setShowResult(true);
+      }, 3000);
     }
   };
 
@@ -146,6 +165,7 @@ const QuizLanding = () => {
     setCurrentQuestion(0);
     setAnswers([]);
     setShowResult(false);
+    setShowLoading(false);
     setShowQuiz(false);
     setResultScore(0);
   };
@@ -156,6 +176,42 @@ const QuizLanding = () => {
 
   const targetDate = new Date();
   targetDate.setMinutes(targetDate.getMinutes() + 15);
+
+  // Loading screen
+  if (showLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center p-3 sm:p-4 flex-col">
+        <img src="./assets/logo_nenem.png" className="w-24 mb-8" />
+        <Card className="w-full max-w-md mx-auto shadow-xl border-0 bg-white">
+          <CardContent className="p-8 text-center">
+            <div className="flex justify-center mb-6">
+              <dotlottie-player 
+                src="https://lottie.host/3782b314-73dd-4af5-b2de-6a41aba55921/5vAxTlD93H.lottie" 
+                background="transparent" 
+                speed="1" 
+                style={{ width: '200px', height: '200px' }}
+                loop 
+                autoplay>
+              </dotlottie-player>
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-3">
+              Analisando suas respostas...
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Preparando seu resultado personalizado
+            </p>
+            <div className="bg-blue-50 p-3 rounded-lg">
+              <p className="text-sm text-blue-700">
+                🔍 Identificando padrões de sono<br/>
+                🧠 Calculando estratégias personalizadas<br/>
+                ✨ Gerando seu plano de ação
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   if (showResult) {
     return (
