@@ -7,7 +7,7 @@ import CountdownTimer from './CountdownTimer';
 import ImageCarousel from './ImageCarousel';
 import ContactSection from './ContactSection';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 
 const QuizLanding = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -222,28 +222,24 @@ const QuizLanding = () => {
   }
 
   if (showResult) {
-    // Dados para o gráfico
+    // Dados para o gráfico de barras
     const chartData = [
       { 
-        name: 'Interferência no Sono', 
-        value: resultScore, 
-        fill: '#ef4444' 
+        category: 'Dificuldades\nde Sono', 
+        value: resultScore,
+        fill: '#ef4444'
       },
       { 
-        name: 'Sono Saudável', 
-        value: 100 - resultScore, 
-        fill: '#22c55e' 
+        category: 'Sono\nSaudável', 
+        value: 100 - resultScore,
+        fill: '#22c55e'
       }
     ];
 
     const chartConfig = {
-      interferencia: {
-        label: "Interferência no Sono",
-        color: "#ef4444"
-      },
-      saudavel: {
-        label: "Sono Saudável", 
-        color: "#22c55e"
+      value: {
+        label: "Porcentagem",
+        color: "#2563eb"
       }
     };
 
@@ -264,31 +260,46 @@ const QuizLanding = () => {
             {/* Gráfico do Resultado */}
             <div className="bg-gradient-to-r from-red-50 to-yellow-50 p-4 rounded-lg border-l-4 border-red-400">
               <h3 className="text-lg font-bold text-red-600 mb-4 text-center">
-                Análise do Sono do seu Bebê
+                📊 Análise do Sono do seu Bebê
               </h3>
               
               <div className="flex flex-col items-center">
                 <ChartContainer
                   config={chartConfig}
-                  className="mx-auto aspect-square max-h-[250px]"
+                  className="mx-auto aspect-[4/3] max-h-[300px] w-full"
                 >
-                  <PieChart>
+                  <BarChart
+                    data={chartData}
+                    margin={{
+                      top: 20,
+                      right: 30,
+                      left: 20,
+                      bottom: 5,
+                    }}
+                  >
+                    <XAxis 
+                      dataKey="category"
+                      axisLine={false}
+                      tickLine={false}
+                      tick={{ fontSize: 12, fill: '#374151' }}
+                    />
+                    <YAxis 
+                      axisLine={false}
+                      tickLine={false}
+                      tick={{ fontSize: 12, fill: '#374151' }}
+                      domain={[0, 100]}
+                    />
                     <ChartTooltip
                       cursor={false}
-                      content={<ChartTooltipContent hideLabel />}
+                      content={<ChartTooltipContent />}
+                      formatter={(value) => [`${value}%`, 'Porcentagem']}
                     />
-                    <Pie
-                      data={chartData}
-                      dataKey="value"
-                      nameKey="name"
-                      innerRadius={60}
-                      strokeWidth={5}
-                    >
-                      {chartData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.fill} />
-                      ))}
-                    </Pie>
-                  </PieChart>
+                    <Bar 
+                      dataKey="value" 
+                      fill="#8884d8"
+                      radius={[4, 4, 0, 0]}
+                    />
+                  </BarChart>
                 </ChartContainer>
                 
                 <div className="text-center mt-4">
