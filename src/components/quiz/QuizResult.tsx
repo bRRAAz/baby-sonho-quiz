@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Baby, CheckCircle, Heart } from 'lucide-react';
+import { Baby, CheckCircle, Heart, Clock, Star, Zap } from 'lucide-react';
 import VideoPlayer from '../videoPlayer';
 import CountdownTimer from '../CountdownTimer';
 import ImageCarousel from '../ImageCarousel';
@@ -10,6 +10,8 @@ import ContactSection from '../ContactSection';
 import ResultChart from './ResultChart';
 import BenefitsList from './BenefitsList';
 import ProductOffer from './ProductOffer';
+import HowItWorks from './HowItWorks';
+import MiniSimulation from './MiniSimulation';
 
 interface QuizResultProps {
   score: number;
@@ -37,17 +39,6 @@ const QuizResult = ({ score, onReset }: QuizResultProps) => {
           {/* Gráfico do Resultado */}
           <ResultChart score={score} />
 
-          {/* Copy sobre o produto */}
-          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-            <h3 className="text-lg font-bold text-blue-800 mb-3">Por que o Método Noite de Paz funciona?</h3>
-            <div className="space-y-2 text-sm text-gray-700">
-              <p>✅ <strong>Método gentil e respeitoso:</strong> Sem deixar o bebê chorar sozinho</p>
-              <p>✅ <strong>Resultados em 7 dias:</strong> Mais de 90% das famílias veem melhora na primeira semana</p>
-              <p>✅ <strong>Funciona para todas as idades:</strong> De 4 meses a 3 anos</p>
-              <p>✅ <strong>Suporte completo:</strong> Grupo VIP com especialistas 24h</p>
-            </div>
-          </div>
-
           <VideoPlayer />
           <Button
             className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 sm:py-6 px-4 sm:px-8 text-base sm:text-lg md:text-xl shadow-lg transform hover:scale-105 transition-all duration-200 animate-pulse-scale"
@@ -64,16 +55,22 @@ const QuizResult = ({ score, onReset }: QuizResultProps) => {
           {/* Container unificado para produto + bônus */}
           <ProductOffer />
 
+          {/* Nova seção: Como funciona na prática */}
+          <HowItWorks />
+
+          {/* Mini-simulação interativa */}
+          <MiniSimulation />
+
           <BenefitsList />
 
           {/* Carrossel de Imagens */}
           <ImageCarousel />
 
-          {/* Mais copy sobre garantia e resultados */}
+          {/* Mais copy sobre garantia e resultados - ALTERADO PARA 7 DIAS */}
           <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-            <h3 className="text-lg font-bold text-purple-800 mb-3 text-center">🛡️ Garantia de 30 dias</h3>
+            <h3 className="text-lg font-bold text-purple-800 mb-3 text-center">🛡️ Garantia de 7 dias</h3>
             <p className="text-sm text-gray-700 text-center mb-3">
-              Se você não ver resultados em 30 dias, devolvemos 100% do seu dinheiro. Sem perguntas, sem complicação.
+              Se você não ver resultados em 7 dias, devolvemos 100% do seu dinheiro. Sem perguntas, sem complicação.
             </p>
             <div className="text-center">
               <p className="text-xs text-purple-600 font-semibold">

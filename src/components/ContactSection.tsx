@@ -22,7 +22,7 @@ const ContactSection = () => {
     },
     {
       question: "E se eu não conseguir aplicar o método?",
-      answer: "Você terá acesso ao nosso grupo VIP com suporte 24h de especialistas em sono infantil. Além disso, oferecemos garantia de 30 dias."
+      answer: "Você terá acesso ao nosso grupo VIP com suporte 24h de especialistas em sono infantil. Além disso, oferecemos garantia de 7 dias."
     },
     {
       question: "O método funciona para bebês que só dormem no colo?",
@@ -106,7 +106,7 @@ const ContactSection = () => {
         </CardContent>
       </Card>
 
-      {/* Garantias e Segurança */}
+      {/* Garantias e Segurança - ALTERADO PARA 7 DIAS */}
       <Card className="bg-white shadow-lg border-0">
         <CardContent className="p-4">
           <h3 className="text-lg font-bold text-center text-gray-800 mb-4">
@@ -116,7 +116,7 @@ const ContactSection = () => {
             <div className="flex items-center gap-3">
               <Shield className="h-5 w-5 text-green-600" />
               <div>
-                <p className="font-semibold text-sm text-gray-800">Garantia de 30 dias</p>
+                <p className="font-semibold text-sm text-gray-800">Garantia de 7 dias</p>
                 <p className="text-xs text-gray-600">100% do seu dinheiro de volta se não funcionar</p>
               </div>
             </div>
